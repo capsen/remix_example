@@ -19,7 +19,7 @@ type Post = {
 };
 
 export default function Posts() {
-  const { posts } = useLoaderData() as LoaderData;
+  const { posts } = useLoaderData<LoaderData>();
   console.log(posts);
   return (
     <main>
