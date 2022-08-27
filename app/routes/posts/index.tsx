@@ -1,6 +1,7 @@
 import { json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import { getPosts } from "~/models/post.server";
+import { useAdminUser } from "~/utils";
 
 type LoaderData = {
   // this is a handy way to say: "posts is whatever type getPosts resolves to"
@@ -20,12 +21,15 @@ type Post = {
 
 export default function Posts() {
   const { posts } = useLoaderData<LoaderData>();
-  console.log(posts);
+
+  const adminUser = useAdminUser();
   return (
     <main>
-      <Link to="admin" className="text-red-600 underline">
-        Admin
-      </Link>
+      {adminUser ? (
+        <Link to="admin" className="text-red-600 underline">
+          Admin
+        </Link>
+      ) : null}
       <h1>Posts</h1>
       <ul>
         {posts.map((post) => (
