@@ -3,8 +3,10 @@ import invariant from "tiny-invariant";
 
 import type { User } from "~/models/user.server";
 import { getUserById } from "~/models/user.server";
+import type { getEnv } from "./env.server";
 
 invariant(process.env.SESSION_SECRET, "SESSION_SECRET must be set");
+declare var ENV: ReturnType<typeof getEnv>;
 
 export const sessionStorage = createCookieSessionStorage({
   cookie: {
