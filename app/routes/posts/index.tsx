@@ -14,11 +14,6 @@ export const loader = async () => {
   });
 };
 
-type Post = {
-  slug: string;
-  title: string;
-};
-
 export default function Posts() {
   const { posts } = useLoaderData<LoaderData>();
 
