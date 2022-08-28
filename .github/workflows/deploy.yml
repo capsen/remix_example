@@ -111,6 +111,8 @@ jobs:
 
       - name: 🌳 Cypress run
         uses: cypress-io/github-action@v4
+        env: 
+          ADMIN_EMAIL: rachel@remix.run
         with:
           start: npm run start:mocks
           wait-on: "http://localhost:8811"
